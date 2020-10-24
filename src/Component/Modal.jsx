@@ -41,6 +41,7 @@ const Modal = (props) => {
                     </label>
                     <div className="col-sm-10">
                       <input
+                        required
                         className="form-control"
                         id="title"
                         name="title"
@@ -61,6 +62,7 @@ const Modal = (props) => {
                     </label>
                     <div className="col-sm-10">
                       <input
+                        required
                         className="form-control"
                         id="author"
                         name="author"
@@ -84,6 +86,7 @@ const Modal = (props) => {
                     </label>
                     <div className="col-sm-10">
                       <input
+                        required
                         className="form-control"
                         id="publishedDate"
                         name="publishedDate"
@@ -104,6 +107,7 @@ const Modal = (props) => {
                     </label>
                     <div className="col-sm-10">
                       <input
+                        required
                         className="form-control"
                         id="img"
                         name="img"
