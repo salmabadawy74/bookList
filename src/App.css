@@ -1,0 +1,29 @@
+.App__title {
+  color: #ff3466;
+}
+
+.App__navbar {
+  width: 360px;
+  border: none;
+  margin: 0 auto 20px auto;
+}
+.nav__link:hover,
+.nav__link:activ e,
+.nav__link:focus {
+  background-color: #383b76;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.nav__link--active {
+  background-color: #383b76;
+  color: #fff;
+  border-bottom: 4px solid #ff3466 !important;
+}
+body {
+  background-color: rgb(74, 226, 188);
+}
+img {
+  height: 172px;
+  width: 128px;
+}
