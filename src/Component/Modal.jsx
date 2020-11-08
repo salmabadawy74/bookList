@@ -2,7 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import joi from "joi";
 const Modal = (props) => {
-  const { data, hundleSubmit, hundleChange, modalOpen, toggle } = props;
+  const {
+    data,
+    hundleSubmit,
+    hundleChange,
+    modalOpen,
+    toggle,
+    addImageHandler,
+  } = props;
 
   const schema = {
     title: joi.string().required(),
@@ -107,13 +114,10 @@ const Modal = (props) => {
                     </label>
                     <div className="col-sm-10">
                       <input
+                        type="file"
                         required
                         className="form-control"
-                        id="img"
-                        name="img"
-                        placeholder="Image URL ..."
-                        value={data.img}
-                        onChange={(e) => hundleChange(e)}
+                        onChange={(e) => addImageHandler(e)}
                       />
                     </div>
                   </div>

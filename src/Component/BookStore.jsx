@@ -5,7 +5,6 @@ import axios from "axios";
 import Modal from "./Modal";
 import _ from "lodash";
 
-import { storage } from "../Firebase/index";
 import BooksTable from "./BooksTable";
 class BookStore extends Component {
   state = {
@@ -51,11 +50,30 @@ class BookStore extends Component {
     });
   };
 
+  addImageHandler = (e) => {
+    // this.setState({ image: null, videos: null });
+    let newBook = { ...this.state.newBookData };
+    const files = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        if (reader.result.split(":")[1].split("/")[0] === "image") {
+          newBook.img = reader.result;
+          this.setState({ newBookData: newBook });
+        }
+      }
+    };
+    if (files) {
+      reader.readAsDataURL(files);
+    }
+  };
+
   toggle = () => {
     this.setState({
       modalOpen: !this.state.modalOpen,
     });
   };
+
   hundleSubmit = (e) => {
     const { books, newBookData } = this.state;
     books.push(newBookData);
@@ -110,13 +128,7 @@ class BookStore extends Component {
           onChange={this.hundleSearch}
           toggle={this.toggle}
         />
-        {/*
-        <Books
-          books={sortedbook}
-          hundleDelete={this.hundleDelete}
-          onSort={this.onSort}
-        />
-        */}
+
         <BooksTable
           books={sortedbook}
           hundleDelete={this.hundleDelete}
@@ -129,10 +141,9 @@ class BookStore extends Component {
           modalOpen={this.state.modalOpen}
           data={this.state.newBookData}
           hundleChange={this.hundleChange}
+          addImageHandler={this.addImageHandler}
           hundleSubmit={this.hundleSubmit}
-          hundlefile={this.hundlefile}
           errors={this.state.errors}
-          hundleUpload={this.hundleUpload}
         />
       </>
     );
